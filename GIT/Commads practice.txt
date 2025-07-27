@@ -1,0 +1,67 @@
+--------------GIT COMMANDS --------------------
+
+THIS IS JUST FOR MY PRACTICE 
+
+git init
+git clone <repo-url>
+git status
+
+---------------
+
+git add file.txt
+git add "file name with spaces.txt"
+git add .
+git restore --staged file.txt
+git commit -m "Commit message"
+git commit --amend --no-edit
+
+---------------
+
+git remote add origin <repo-url>
+git remote -v
+git push origin main
+git pull origin main
+git pull --rebase origin main
+git push origin main --force
+
+---------------
+
+git branch
+git branch new-branch
+git checkout branch-name
+git checkout -b new-branch
+git branch -d branch-name
+git push origin --delete branch-name
+git merge branch-name
+
+---------------
+
+git checkout -- file.txt
+git restore --staged file.txt
+git reset --soft HEAD~1
+git reset --hard HEAD~1
+git reset --hard <commit-hash>
+
+---------------
+
+git log
+git log --oneline
+git diff
+git show <commit-hash>
+
+---------------
+
+git tag v1.0
+git tag -a v1.0 -m "Version 1.0"
+git push origin v1.0
+git push origin --tags
+git tag -d v1.0
+git push origin --delete v1.0
+
+---------------
+
+git checkout main
+git pull origin main
+git add .
+git commit -m "Your message"
+git push origin main
