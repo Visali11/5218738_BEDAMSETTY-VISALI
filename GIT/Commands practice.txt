@@ -1,0 +1,7 @@
+--------------------GIT COMMANDS-------------------
+This is just for practice
+
+git clone : for cloning
+git init: for initialising
+git status: for checking status
+
