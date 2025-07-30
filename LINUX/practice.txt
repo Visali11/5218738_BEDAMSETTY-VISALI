@@ -1,0 +1,351 @@
+    1  ls
+    2  cd ./
+    3  cd
+    4  ls
+    5  cd ..
+    6  ls
+    7  cd ../
+    8  ls
+    9  cd mnt
+   10  ls
+   11  cd c
+   12  ls
+   13  cd ../
+   14  ls
+   15  cd ../
+   16  ls
+   17  mnt
+   18  cd mnt
+   19  ls
+   20  echo $SHELL
+   21  whoami
+   22  whatis cat
+   23  whatis gcc
+   24  whereis cat
+   25  info cat
+   26  clear
+   27  sudo apt update
+   28  sudo apt upgrade
+   29  sudo apt install build-essential
+   30  sudo apt install gcc
+   31  sudo apt install g++
+   32  date; uname -r; whoami
+   33  date; unae -r; whoami
+   34  date && whoami
+   35  dat && whoami
+   36  date
+   37  date "+%D"
+   38  date "+%D %T"
+   39  date "%A %B %d %y%T"
+   40  bc
+   41  bc <<< "12/4"
+   42  bc <<< "2<3"
+   43  bc <<< "2^10"
+   44  uname -o
+   45  uname -a
+   46  echo `date`
+   47  echo "hii
+   48  iam
+   49  visali
+   50  11
+   51  _"
+   52  seq 1 10
+   53  seq -s " " 10
+   54  rev <<< linux
+   55  history
+   56  history 10
+   57  bc <<< "2^10"
+   58  echo $?
+   59  man page
+   60  man cat
+   61  nano test
+   62  ls
+   63  pwd
+   64  mkdir week3
+   65  cd week3
+   66  mkdir linux notes commands
+   67  ls
+   68  cd linux
+   69  mkdir -p models/basic
+   70  ls
+   71  cd
+   72  ls
+   73  ls -1
+   74  ls -a
+   75  ls -1
+   76  ls -R
+   77  cd week3
+   78  ls -R
+   79  date
+   80  bc
+   81  date
+   82  sudo apt update
+   83  sudo apt upgrade
+   84  clear
+   85  echo $SHELL
+   86  printenv SHELL
+   87  whoami
+   88  whatisecho
+   89  whatis echo
+   90  what is printenv
+   91  whatis whoami
+   92  whatis cat
+   93  whereis gcc
+   94  info cat
+   95  sudo apt install gcc
+   96  sudo apt install build-essential
+   97  date
+   98  "+%D"
+   99  date "+%D"
+  100  date "+%D %T"
+  101  date "+%D%M%Y"
+  102  date "+%Y/%M/%D"
+  103  date "+%A %B %d%Y %T"
+  104  date --date "tomorrow"
+  105  date --date "2 years ago"
+  106  man date
+  107  cal
+  108  sudo apt install ncal
+  109  cal 11 2025
+  110  cal 4 2003
+  111  cal 3011
+  112  cal -11
+  113  cal -3
+  114  ps
+  115  exit
+  116  bc
+  117  bc <<< "12/5"
+  118  bc <<< "scale=2; 12/5"
+  119  uname
+  120  uname -o
+  121  uname -i
+  122  uname -n
+  123  uname -v
+  124  uname -s
+  125  uname -m
+  126  uname -r
+  127  uname -a
+  128  echo "iam visali"
+  129  echo -e "HELLO WORLD"
+  130  echo "Welcome to \"Linux\"
+  131  io
+  132  "
+  133  echo `date~
+  134  5218738"
+  135  "
+  136  ~
+  137  `
+  138  echo "I am
+  139  Visali
+  140  ID 5218738"
+  141  echo "linux commands practice"
+  142  printf "Linux practice"
+  143  printf "This is module3\n"
+  144  seq 1 10
+  145  seq 11 1
+  146  seq 11
+  147  seq 1 11 11
+  148  seq 1 11 111
+  149  seq 11 -1 1
+  150  rev <<< Linux
+  151  rev <<< LTTS
+  152  echo $?
+  153  ls
+  154  mkdir new
+  155  mkdir practice
+  156  ls
+  157  cd
+  158  cd -
+  159  mkdir -p d1/d2
+  160  ls
+  161  cd d 1
+  162  ls
+  163  cd ..
+  164  cd
+  165  ls -l
+  166  ls -a
+  167  ls -R
+  168  nano demo
+  169  touch newfile.txt
+  170  cat newfile.txt
+  171  cat -n demo
+  172  ls
+  173  mkdir training
+  174  cp newfile output.txt training
+  175  cd training
+  176  ls
+  177  cd
+  178  ls -R
+  179  cp -r new training
+  180  ls
+  181  cd new
+  182  ls
+  183  cd
+  184  mv output.txt out
+  185  ls
+  186  cd training
+  187  vi sum.c
+  188  history
+  189  history
+  190  ls
+  191  ls -a
+  192  ls -lh
+  193  echo "week3"
+  194  cd ~
+  195  pwd
+  196  cd /
+  197  cd -
+  198  mkdir modules
+  199  mkdir -p nested/folder/structure
+  200  rmdir d1
+  201  rmdir modules
+  202  touch file1.txt file2.txt
+  203  echo "Hello Linux" > hello.txt
+  204  echo "another line" >> hello.txt
+  205  cat hello.txt
+  206  cp hello.txt copy_hello.txt
+  207  cp -r nested backup_nested
+  208  mv copy_hello.txt moved_hello.txt
+  209  rm moved_hello.txt
+  210  rm -r backup_nested
+  211  cat hello.txt
+  212  head -n 2 hello.txt
+  213  tail -1 hello.txt
+  214  file hello.txt
+  215  history | tail -n 5
+  216  whoami
+  217  id
+  218  env | head -n 5
+  219  cd
+  220  mv output.txt out
+  221  cd training
+  222  ls
+  223  vi sum.c
+  224  sudo apt install update
+  225  cd
+  226  sudo apt install update
+  227  sudo apt install gcc
+  228  gcc ifelse.c
+  229  sudo apt update
+  230  sudo apt upgarde
+  231  sudo apt upgrade
+  232  sudo apt install build-essential
+  233  echo $SHELL
+  234  whatis gcc
+  235  whereis gcc
+  236  info cat
+  237  history
+  238  stat file.txt
+  239  stat newfile.txt
+  240  uptime
+  241  who
+  242  groups
+  243  which python
+  244  which ls
+  245  type ls
+  246  printenv
+  247  printenv USER
+  248  echo "visali"
+  249  read name
+  250  yes "practicing linux commands" | head -n 3
+  251  hostnamect1
+  252  free -h
+  253  cal
+  254  cal 2011
+  255  cal 11 2003
+  256  echo "11 + 19"
+  257  echo "11 + 19 + 22 + 17" | bc
+  258  echo "22<11" | bc
+  259  uname
+  260  uname -a
+  261  lsblk
+  262  uname -R
+  263  uname -l
+  264  rev ilasiv
+  265  rev "ilasiv"
+  266  printf "LINUX COMMANDS"
+  267  printf "linux commands"/n
+  268  echo
+  269  cd
+  270  cd ..
+  271  history
+  272  whatis cat
+  273  cat newfile.txt
+  274  cat week3
+  275  cd
+  276  cat newfile.txt
+  277  cat week3
+  278  history
+  279  cd ~
+  280  mkdir Linux-practice
+  281  cd Linux-practice
+  282  nano Linux_commands_practice.md
+  283  git init
+  284  git add Linux_commands_practice.md
+  285  git status
+  286  git commit -m "Practiced and documented Linux commands"
+  287  git branch -M main
+  288  git remote add origin https://github.com/Visali11/5218738_BEDAMSETTY-VISALI
+  289  git push -u origin main
+  290  git config --global user.email "visalibedamsetty@gmail.com"
+  291  git config --global user.name "Visali11"
+  292  git branch -M main
+  293  git push -u origin main
+  294  git add Linux_commands_practice.md
+  295  git commit -m "Practiced and documented Linux commands"
+  296  git push -u origin main
+  297  git add Linux_commands_practice.md
+  298  git commit -m "Practiced and documented Linux commands"
+  299  git push -u origin main
+  300  git pull --rebase origin main
+  301  git push -u origin main
+  302  cd week3
+  303  cat s1.txt
+  304  ls
+  305  tr ':' '|' < sample.txt > s1.txt
+  306  ls
+  307  cat s1.txt
+  308  cat sample.txt
+  309  tr -s '0' < sample.txt
+  310  tr -d '0' < sample.txt
+  311  nano example.txt
+  312  cat example.txt
+  313  unique example.txt
+  314  uniq example.txt
+  315  ls
+  316  cat sample.txt
+  317  cat s1.txt
+  318  cmp sample.txt s1.txt
+  319  diff sample.txt s1.txt
+  320  ls
+  321  nano test.c
+  322  grep main test.c
+  323  grep ^main test.c
+  324  grep ^int test.c
+  325  grep \; test.c
+  326  nano test.c
+  327  grep ^int test.c
+  328  nano sed.test
+  329  cat sed.test
+  330  sed 's/Hello/Hi/' sed.test
+  331  sed -i 's/Hello/Hi/' sed.test
+  332  cat sed.test
+  333  sed 's/!/$/g' sed.test
+  334  cat sed.test
+  335  sed '/simple/d' sed.test
+  336  cat sed.test
+  337  sed 'Hi/Welcome to sed' sed.test
+  338  sed '/Hi/Welcome to sed' sed.test
+  339  nano awk.test
+  340  awk '{print $0}' awk.test
+  341  awk '{print $1, $3}' awk.test
+  342  awk '$3>50000 {print $1, $3}' awk.test
+  343  awk 'BEGIN {print "Nmae:, Salary: "} {print $1, $3}' awk.test
+  344  awk '{total+= $3} END {print "Total salary=", total}' awk.test
+  345  ls -l
+  346  ls -l s1.txt
+  347  chmod u+xs1.txt
+  348  chmod u+x s1.txt
+  349  ls -l s1.txt
+  350  cd
+  351  history
