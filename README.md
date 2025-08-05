@@ -5,3 +5,5 @@ Git_Simplilearn_certificate
 <img width="844" height="596" alt="Image" src="https://github.com/user-attachments/assets/5607d288-c7b8-454e-9c51-ad2677461006" />
 Linux commands practice
 <img width="1852" height="982" alt="Image" src="https://github.com/user-attachments/assets/cf4d9ab0-7db4-4f8d-82be-5fb231579151" />
+Sololearn introduction to C
+![Image](https://github.com/user-attachments/assets/e7a18800-0306-4f98-a9bc-508ed496eda4)
