@@ -7,3 +7,5 @@ Linux commands practice
 <img width="1852" height="982" alt="Image" src="https://github.com/user-attachments/assets/cf4d9ab0-7db4-4f8d-82be-5fb231579151" />
 Sololearn introduction to C
 ![Image](https://github.com/user-attachments/assets/e7a18800-0306-4f98-a9bc-508ed496eda4)
+intermediate C
+![Image](https://github.com/user-attachments/assets/9b1c1673-cdac-4837-a4ed-ca3a5b56363e)
