@@ -12,15 +12,14 @@
 char* readline();
 char* ltrim(char*);
 char* rtrim(char*);
-char** split_string(char*);
 
 int parse_int(char*);
 
 /*
- * Complete the 'balancedSums' function below.
+ * Complete the 'isBalanced' function below.
  *
  * The function is expected to return a STRING.
- * The function accepts INTEGER_ARRAY arr as parameter.
+ * The function accepts STRING s as parameter.
  */
 
 /*
@@ -42,47 +41,41 @@ int parse_int(char*);
  * }
  *
  */
-char* balancedSums(int arr_count, int* arr) {
-     static char yes[] = "YES";
+char* isBalanced(char* s) {
+    static char yes[] = "YES";
     static char no[] = "NO";
-    
-    long long total = 0;
-    for (int i = 0; i < arr_count; i++) {
-        total += arr[i];
-    }
-
-    long long left_sum = 0;
-    for (int i = 0; i < arr_count; i++) {
-        long long right_sum = total - left_sum - arr[i];
-        if (left_sum == right_sum) {
-            return yes;
+    int len = strlen(s);
+    char *stack = malloc(len);
+    int top = -1;
+    for (int i = 0; i < len; i++) {
+        char c = s[i];
+        if (c == '(' || c == '[' || c == '{') {
+            stack[++top] = c;
+        } else {
+            if (top == -1) return no;
+            char open = stack[top--];
+            if ((c == ')' && open != '(') ||
+                (c == ']' && open != '[') ||
+                (c == '}' && open != '{')) {
+                return no;
+            }
         }
-        left_sum += arr[i];
     }
-    return no;
-
+    free(stack);
+    return (top == -1) ? yes : no;
 }
+
 
 int main()
 {
     FILE* fptr = fopen(getenv("OUTPUT_PATH"), "w");
 
-    int T = parse_int(ltrim(rtrim(readline())));
+    int t = parse_int(ltrim(rtrim(readline())));
 
-    for (int T_itr = 0; T_itr < T; T_itr++) {
-        int n = parse_int(ltrim(rtrim(readline())));
+    for (int t_itr = 0; t_itr < t; t_itr++) {
+        char* s = readline();
 
-        char** arr_temp = split_string(rtrim(readline()));
-
-        int* arr = malloc(n * sizeof(int));
-
-        for (int i = 0; i < n; i++) {
-            int arr_item = parse_int(*(arr_temp + i));
-
-            *(arr + i) = arr_item;
-        }
-
-        char* result = balancedSums(n, arr);
+        char* result = isBalanced(s);
 
         fprintf(fptr, "%s\n", result);
     }
@@ -178,27 +171,6 @@ char* rtrim(char* str) {
     *(end + 1) = '\0';
 
     return str;
-}
-
-char** split_string(char* str) {
-    char** splits = NULL;
-    char* token = strtok(str, " ");
-
-    int spaces = 0;
-
-    while (token) {
-        splits = realloc(splits, sizeof(char*) * ++spaces);
-
-        if (!splits) {
-            return splits;
-        }
-
-        splits[spaces - 1] = token;
-
-        token = strtok(NULL, " ");
-    }
-
-    return splits;
 }
 
 int parse_int(char* str) {

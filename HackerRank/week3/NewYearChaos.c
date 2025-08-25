@@ -17,77 +17,45 @@ char** split_string(char*);
 int parse_int(char*);
 
 /*
- * Complete the 'balancedSums' function below.
+ * Complete the 'minimumBribes' function below.
  *
- * The function is expected to return a STRING.
- * The function accepts INTEGER_ARRAY arr as parameter.
+ * The function accepts INTEGER_ARRAY q as parameter.
  */
 
-/*
- * To return the string from the function, you should either do static allocation or dynamic allocation
- *
- * For example,
- * char* return_string_using_static_allocation() {
- *     static char s[] = "static allocation of string";
- *
- *     return s;
- * }
- *
- * char* return_string_using_dynamic_allocation() {
- *     char* s = malloc(100 * sizeof(char));
- *
- *     s = "dynamic allocation of string";
- *
- *     return s;
- * }
- *
- */
-char* balancedSums(int arr_count, int* arr) {
-     static char yes[] = "YES";
-    static char no[] = "NO";
-    
-    long long total = 0;
-    for (int i = 0; i < arr_count; i++) {
-        total += arr[i];
-    }
-
-    long long left_sum = 0;
-    for (int i = 0; i < arr_count; i++) {
-        long long right_sum = total - left_sum - arr[i];
-        if (left_sum == right_sum) {
-            return yes;
+void minimumBribes(int q_count, int* q) {
+    int bribes = 0;
+    for (int i = 0; i < q_count; i++) {
+        if (q[i] - (i + 1) > 2) {
+            printf("Too chaotic\n");
+            return;
         }
-        left_sum += arr[i];
+        for (int j = (q[i] - 2 > 0 ? q[i] - 2 : 0); j < i; j++) {
+            if (q[j] > q[i]) bribes++;
+        }
     }
-    return no;
-
+    printf("%d\n", bribes);
 }
+
 
 int main()
 {
-    FILE* fptr = fopen(getenv("OUTPUT_PATH"), "w");
+    int t = parse_int(ltrim(rtrim(readline())));
 
-    int T = parse_int(ltrim(rtrim(readline())));
-
-    for (int T_itr = 0; T_itr < T; T_itr++) {
+    for (int t_itr = 0; t_itr < t; t_itr++) {
         int n = parse_int(ltrim(rtrim(readline())));
 
-        char** arr_temp = split_string(rtrim(readline()));
+        char** q_temp = split_string(rtrim(readline()));
 
-        int* arr = malloc(n * sizeof(int));
+        int* q = malloc(n * sizeof(int));
 
         for (int i = 0; i < n; i++) {
-            int arr_item = parse_int(*(arr_temp + i));
+            int q_item = parse_int(*(q_temp + i));
 
-            *(arr + i) = arr_item;
+            *(q + i) = q_item;
         }
 
-        char* result = balancedSums(n, arr);
-
-        fprintf(fptr, "%s\n", result);
+        minimumBribes(n, q);
     }
-
-    fclose(fptr);
 
     return 0;
 }

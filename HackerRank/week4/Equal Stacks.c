@@ -17,75 +17,76 @@ char** split_string(char*);
 int parse_int(char*);
 
 /*
- * Complete the 'balancedSums' function below.
+ * Complete the 'equalStacks' function below.
  *
- * The function is expected to return a STRING.
- * The function accepts INTEGER_ARRAY arr as parameter.
+ * The function is expected to return an INTEGER.
+ * The function accepts following parameters:
+ *  1. INTEGER_ARRAY h1
+ *  2. INTEGER_ARRAY h2
+ *  3. INTEGER_ARRAY h3
  */
 
-/*
- * To return the string from the function, you should either do static allocation or dynamic allocation
- *
- * For example,
- * char* return_string_using_static_allocation() {
- *     static char s[] = "static allocation of string";
- *
- *     return s;
- * }
- *
- * char* return_string_using_dynamic_allocation() {
- *     char* s = malloc(100 * sizeof(char));
- *
- *     s = "dynamic allocation of string";
- *
- *     return s;
- * }
- *
- */
-char* balancedSums(int arr_count, int* arr) {
-     static char yes[] = "YES";
-    static char no[] = "NO";
-    
-    long long total = 0;
-    for (int i = 0; i < arr_count; i++) {
-        total += arr[i];
-    }
+int equalStacks(int h1_count, int* h1, int h2_count, int* h2, int h3_count, int* h3) {
+    int sum1 = 0, sum2 = 0, sum3 = 0;
+    for (int i = 0; i < h1_count; i++) sum1 += h1[i];
+    for (int i = 0; i < h2_count; i++) sum2 += h2[i];
+    for (int i = 0; i < h3_count; i++) sum3 += h3[i];
 
-    long long left_sum = 0;
-    for (int i = 0; i < arr_count; i++) {
-        long long right_sum = total - left_sum - arr[i];
-        if (left_sum == right_sum) {
-            return yes;
-        }
-        left_sum += arr[i];
+    int i1 = 0, i2 = 0, i3 = 0;
+    while (true) {
+        if (i1 == h1_count || i2 == h2_count || i3 == h3_count) return 0;
+        if (sum1 == sum2 && sum2 == sum3) return sum1;
+        if (sum1 >= sum2 && sum1 >= sum3) sum1 -= h1[i1++];
+        else if (sum2 >= sum1 && sum2 >= sum3) sum2 -= h2[i2++];
+        else sum3 -= h3[i3++];
     }
-    return no;
-
 }
 
 int main()
 {
     FILE* fptr = fopen(getenv("OUTPUT_PATH"), "w");
 
-    int T = parse_int(ltrim(rtrim(readline())));
+    char** first_multiple_input = split_string(rtrim(readline()));
 
-    for (int T_itr = 0; T_itr < T; T_itr++) {
-        int n = parse_int(ltrim(rtrim(readline())));
+    int n1 = parse_int(*(first_multiple_input + 0));
 
-        char** arr_temp = split_string(rtrim(readline()));
+    int n2 = parse_int(*(first_multiple_input + 1));
 
-        int* arr = malloc(n * sizeof(int));
+    int n3 = parse_int(*(first_multiple_input + 2));
 
-        for (int i = 0; i < n; i++) {
-            int arr_item = parse_int(*(arr_temp + i));
+    char** h1_temp = split_string(rtrim(readline()));
 
-            *(arr + i) = arr_item;
-        }
+    int* h1 = malloc(n1 * sizeof(int));
 
-        char* result = balancedSums(n, arr);
+    for (int i = 0; i < n1; i++) {
+        int h1_item = parse_int(*(h1_temp + i));
 
-        fprintf(fptr, "%s\n", result);
+        *(h1 + i) = h1_item;
     }
+
+    char** h2_temp = split_string(rtrim(readline()));
+
+    int* h2 = malloc(n2 * sizeof(int));
+
+    for (int i = 0; i < n2; i++) {
+        int h2_item = parse_int(*(h2_temp + i));
+
+        *(h2 + i) = h2_item;
+    }
+
+    char** h3_temp = split_string(rtrim(readline()));
+
+    int* h3 = malloc(n3 * sizeof(int));
+
+    for (int i = 0; i < n3; i++) {
+        int h3_item = parse_int(*(h3_temp + i));
+
+        *(h3 + i) = h3_item;
+    }
+
+    int result = equalStacks(n1, h1, n2, h2, n3, h3);
+
+    fprintf(fptr, "%d\n", result);
 
     fclose(fptr);
 

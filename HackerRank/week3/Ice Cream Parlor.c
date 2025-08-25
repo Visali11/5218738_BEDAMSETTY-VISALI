@@ -17,59 +17,68 @@ char** split_string(char*);
 int parse_int(char*);
 
 /*
- * Complete the 'balancedSums' function below.
+ * Complete the 'icecreamParlor' function below.
  *
- * The function is expected to return a STRING.
- * The function accepts INTEGER_ARRAY arr as parameter.
+ * The function is expected to return an INTEGER_ARRAY.
+ * The function accepts following parameters:
+ *  1. INTEGER m
+ *  2. INTEGER_ARRAY arr
  */
 
 /*
- * To return the string from the function, you should either do static allocation or dynamic allocation
+ * To return the integer array from the function, you should:
+ *     - Store the size of the array to be returned in the result_count variable
+ *     - Allocate the array statically or dynamically
  *
  * For example,
- * char* return_string_using_static_allocation() {
- *     static char s[] = "static allocation of string";
+ * int* return_integer_array_using_static_allocation(int* result_count) {
+ *     *result_count = 5;
  *
- *     return s;
+ *     static int a[5] = {1, 2, 3, 4, 5};
+ *
+ *     return a;
  * }
  *
- * char* return_string_using_dynamic_allocation() {
- *     char* s = malloc(100 * sizeof(char));
+ * int* return_integer_array_using_dynamic_allocation(int* result_count) {
+ *     *result_count = 5;
  *
- *     s = "dynamic allocation of string";
+ *     int *a = malloc(5 * sizeof(int));
  *
- *     return s;
+ *     for (int i = 0; i < 5; i++) {
+ *         *(a + i) = i + 1;
+ *     }
+ *
+ *     return a;
  * }
  *
  */
-char* balancedSums(int arr_count, int* arr) {
-     static char yes[] = "YES";
-    static char no[] = "NO";
-    
-    long long total = 0;
-    for (int i = 0; i < arr_count; i++) {
-        total += arr[i];
-    }
+int* icecreamParlor(int m, int arr_count, int* arr, int* result_count) {
+    *result_count = 2;
+    int* res = malloc(2 * sizeof(int));
 
-    long long left_sum = 0;
     for (int i = 0; i < arr_count; i++) {
-        long long right_sum = total - left_sum - arr[i];
-        if (left_sum == right_sum) {
-            return yes;
+        for (int j = i + 1; j < arr_count; j++) {
+            if (arr[i] + arr[j] == m) {
+                res[0] = i + 1;
+                res[1] = j + 1;
+                return res;
+            }
         }
-        left_sum += arr[i];
     }
-    return no;
 
+    return res;
 }
+
 
 int main()
 {
     FILE* fptr = fopen(getenv("OUTPUT_PATH"), "w");
 
-    int T = parse_int(ltrim(rtrim(readline())));
+    int t = parse_int(ltrim(rtrim(readline())));
 
-    for (int T_itr = 0; T_itr < T; T_itr++) {
+    for (int t_itr = 0; t_itr < t; t_itr++) {
+        int m = parse_int(ltrim(rtrim(readline())));
+
         int n = parse_int(ltrim(rtrim(readline())));
 
         char** arr_temp = split_string(rtrim(readline()));
@@ -82,9 +91,18 @@ int main()
             *(arr + i) = arr_item;
         }
 
-        char* result = balancedSums(n, arr);
+        int result_count;
+        int* result = icecreamParlor(m, n, arr, &result_count);
 
-        fprintf(fptr, "%s\n", result);
+        for (int i = 0; i < result_count; i++) {
+            fprintf(fptr, "%d", *(result + i));
+
+            if (i != result_count - 1) {
+                fprintf(fptr, " ");
+            }
+        }
+
+        fprintf(fptr, "\n");
     }
 
     fclose(fptr);

@@ -17,75 +17,105 @@ char** split_string(char*);
 int parse_int(char*);
 
 /*
- * Complete the 'balancedSums' function below.
+ * Complete the 'climbingLeaderboard' function below.
  *
- * The function is expected to return a STRING.
- * The function accepts INTEGER_ARRAY arr as parameter.
+ * The function is expected to return an INTEGER_ARRAY.
+ * The function accepts following parameters:
+ *  1. INTEGER_ARRAY ranked
+ *  2. INTEGER_ARRAY player
  */
 
 /*
- * To return the string from the function, you should either do static allocation or dynamic allocation
+ * To return the integer array from the function, you should:
+ *     - Store the size of the array to be returned in the result_count variable
+ *     - Allocate the array statically or dynamically
  *
  * For example,
- * char* return_string_using_static_allocation() {
- *     static char s[] = "static allocation of string";
+ * int* return_integer_array_using_static_allocation(int* result_count) {
+ *     *result_count = 5;
  *
- *     return s;
+ *     static int a[5] = {1, 2, 3, 4, 5};
+ *
+ *     return a;
  * }
  *
- * char* return_string_using_dynamic_allocation() {
- *     char* s = malloc(100 * sizeof(char));
+ * int* return_integer_array_using_dynamic_allocation(int* result_count) {
+ *     *result_count = 5;
  *
- *     s = "dynamic allocation of string";
+ *     int *a = malloc(5 * sizeof(int));
  *
- *     return s;
+ *     for (int i = 0; i < 5; i++) {
+ *         *(a + i) = i + 1;
+ *     }
+ *
+ *     return a;
  * }
  *
  */
-char* balancedSums(int arr_count, int* arr) {
-     static char yes[] = "YES";
-    static char no[] = "NO";
-    
-    long long total = 0;
-    for (int i = 0; i < arr_count; i++) {
-        total += arr[i];
-    }
+int* climbingLeaderboard(int ranked_count, int* ranked, int player_count, int* player, int* result_count) {
+    int* result = malloc(player_count * sizeof(int));
+    *result_count = player_count;
 
-    long long left_sum = 0;
-    for (int i = 0; i < arr_count; i++) {
-        long long right_sum = total - left_sum - arr[i];
-        if (left_sum == right_sum) {
-            return yes;
+    int* unique = malloc(ranked_count * sizeof(int));
+    int ucount = 0;
+    unique[ucount++] = ranked[0];
+    for (int i = 1; i < ranked_count; i++) {
+        if (ranked[i] != unique[ucount - 1]) {
+            unique[ucount++] = ranked[i];
         }
-        left_sum += arr[i];
     }
-    return no;
 
+    int idx = ucount - 1;
+    for (int i = 0; i < player_count; i++) {
+        while (idx >= 0 && player[i] >= unique[idx]) idx--;
+        result[i] = idx + 2;
+    }
+
+    free(unique);
+    return result;
 }
+
 
 int main()
 {
     FILE* fptr = fopen(getenv("OUTPUT_PATH"), "w");
 
-    int T = parse_int(ltrim(rtrim(readline())));
+    int ranked_count = parse_int(ltrim(rtrim(readline())));
 
-    for (int T_itr = 0; T_itr < T; T_itr++) {
-        int n = parse_int(ltrim(rtrim(readline())));
+    char** ranked_temp = split_string(rtrim(readline()));
 
-        char** arr_temp = split_string(rtrim(readline()));
+    int* ranked = malloc(ranked_count * sizeof(int));
 
-        int* arr = malloc(n * sizeof(int));
+    for (int i = 0; i < ranked_count; i++) {
+        int ranked_item = parse_int(*(ranked_temp + i));
 
-        for (int i = 0; i < n; i++) {
-            int arr_item = parse_int(*(arr_temp + i));
-
-            *(arr + i) = arr_item;
-        }
-
-        char* result = balancedSums(n, arr);
-
-        fprintf(fptr, "%s\n", result);
+        *(ranked + i) = ranked_item;
     }
+
+    int player_count = parse_int(ltrim(rtrim(readline())));
+
+    char** player_temp = split_string(rtrim(readline()));
+
+    int* player = malloc(player_count * sizeof(int));
+
+    for (int i = 0; i < player_count; i++) {
+        int player_item = parse_int(*(player_temp + i));
+
+        *(player + i) = player_item;
+    }
+
+    int result_count;
+    int* result = climbingLeaderboard(ranked_count, ranked, player_count, player, &result_count);
+
+    for (int i = 0; i < result_count; i++) {
+        fprintf(fptr, "%d", *(result + i));
+
+        if (i != result_count - 1) {
+            fprintf(fptr, "\n");
+        }
+    }
+
+    fprintf(fptr, "\n");
 
     fclose(fptr);
 
